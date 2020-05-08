@@ -14,7 +14,18 @@ function App() {
   }, []);
   
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post("repositories", {
+      title: "Desafio 04",
+      url: "https://github.com/denilsoncamara/clone-twitter",
+      techs: [
+        "Adonis",
+        "Express",
+        "NextJS"
+      ]
+    });
+
+    const repository = response.data;
+    setRepositories([...repositories, repository]);
   }
 
   async function handleRemoveRepository(id) {
